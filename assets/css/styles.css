@@ -1,0 +1,204 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0; /* Elimina los márgenes */
+    padding: 0; /* Elimina los paddings */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total de los elementos */
+}
+
+/* Estilos para el contenedor principal utilizando Grid */
+.container {
+    display: grid; /* Utiliza grid layout */
+    grid-template-areas:
+        "sidebar main"
+        "sidebar footer"; /* Define las áreas del grid */
+    grid-template-columns: 200px 1fr; /* Menú lateral de 200px y el resto para el contenido principal */
+    min-height: 100vh; /* Altura mínima del 100% de la ventana */
+    transition: grid-template-columns 0.3s; /* Transición suave para el cambio de columnas */
+}
+
+.container.sidebar-expanded {
+    grid-template-columns: 250px 1fr; /* Ancho expandido cuando el menú lateral está en hover */
+}
+
+/* Menú de navegación lateral */
+.sidebar {
+    grid-area: sidebar; /* Asigna esta área al sidebar */
+    background-color: #25527b; /* Color de fondo del sidebar */
+    color: #fff; /* Color del texto en el sidebar */
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Apila los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    transition: width 0.3s; /* Transición suave para el cambio de ancho */
+}
+
+.sidebar:hover {
+    width: 250px; /* Ancho expandido cuando se pasa el mouse sobre la barra lateral */
+}
+
+.logo img {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Espaciado inferior */
+    transition: transform 0.3s; /* Transición suave para la transformación */
+}
+
+.logo img:hover {
+    transform: rotate(360deg); /* Animación de rotación del logo */
+}
+
+.nav-links {
+    list-style: none; /* Elimina los estilos de lista */
+    padding: 0; /* Elimina el padding */
+    width: 100%; /* Ancho completo del contenedor */
+}
+
+.nav-links li {
+    margin-bottom: 15px; /* Espaciado inferior */
+    width: 100%; /* Ancho completo del contenedor */
+}
+
+.nav-links a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina la subrayado del texto */
+    padding: 10px; /* Espaciado interno */
+    display: block; /* Muestra el elemento como un bloque */
+    text-align: center; /* Alinea el texto al centro */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves para color de fondo y transformación */
+}
+
+.nav-links a:hover {
+    background-color: #004494; /* Color de fondo al pasar el mouse */
+    transform: translateX(10px); /* Desplazamiento a la derecha en hover */
+}
+
+/* Sección Principal */
+main {
+    grid-area: main; /* Asigna esta área al main */
+    padding: 20px; /* Espaciado interno */
+}
+
+.gallery {
+    text-align: center; /* Alinea el texto al centro */
+}
+
+.image-container {
+    display: grid; /* Utiliza grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Columnas responsivas */
+    gap: 20px; /* Espaciado entre elementos */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Animaciones */
+.hover-zoom {
+    transition: transform 0.5s; /* Transición suave para la transformación */
+}
+
+.hover-zoom:hover {
+    transform: scale(1.1); /* Escala la imagen al pasar el mouse */
+}
+
+.hover-rotate {
+    transition: transform 0.5s; /* Transición suave para la transformación */
+}
+
+.hover-rotate:hover {
+    transform: rotate(15deg); /* Rota la imagen al pasar el mouse */
+}
+
+.hover-scale {
+    transition: transform 0.5s; /* Transición suave para la transformación */
+}
+
+.hover-scale:hover {
+    transform: scale(0.9); /* Reduce la escala de la imagen al pasar el mouse */
+}
+
+.image-container img {
+    width: 100%; /* Ancho completo del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Botón para volver al inicio */
+#scrollToTop {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    bottom: 40px; /* Espacio desde la parte inferior */
+    right: 40px; /* Espacio desde la parte derecha */
+    background-color: #25527b; /* Color de fondo */
+    color: white; /* Color del icono */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 50%; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano al pasar por encima */
+    font-size: 18px; /* Tamaño de la fuente */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    transition: opacity 0.3s; /* Transición suave */
+}
+
+#scrollToTop:hover {
+    background-color: #004494; /* Color de fondo al pasar el mouse */
+}
+
+/* Footer */
+footer {
+    grid-area: footer; /* Asigna esta área al footer */
+    background-color: #25527b; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Apila los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 20px; /* Espaciado interno */
+}
+
+.social-icons {
+    display: flex; /* Utiliza flexbox */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.social-icon {
+    color: white; /* Color del icono */
+    text-decoration: none; /* Elimina el subrayado */
+    margin: 0 10px; /* Margen horizontal */
+    font-size: 24px; /* Tamaño de la fuente */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+
+.social-icon:hover {
+    color: #ddd; /* Color del icono al pasar el mouse */
+}
+
+/* Media queries para el diseño responsive */
+@media (max-width: 575px) {
+    .container {
+        grid-template-areas:
+            "sidebar"
+            "main"
+            "footer"; /* Define las áreas del grid para dispositivos pequeños */
+        grid-template-columns: 1fr; /* Una columna para dispositivos pequeños */
+    }
+
+    .sidebar {
+        flex-direction: row; /* Apila los elementos en fila */
+        justify-content: space-between; /* Espacia los elementos equitativamente */
+        padding: 10px; /* Espaciado interno reducido */
+    }
+
+    .logo img {
+        width: 50px; /* Ajusta el tamaño del logo para dispositivos pequeños */
+    }
+
+    .nav-links {
+        display: flex; /* Utiliza flexbox */
+        flex-direction: row; /* Apila los elementos en fila */
+        justify-content: space-around; /* Espacia los elementos equitativamente */
+        width: 100%; /* Ancho completo del contenedor */
+    }
+
+    .nav-links li {
+        margin-bottom: 0; /* Elimina el margen inferior */
+        margin-left: 10px; /* Margen izquierdo */
+    }
+}
